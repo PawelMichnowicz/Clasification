@@ -1,0 +1,170 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Course 3 - Week 1 - Lesson 1.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/PawelMichnowicz/Clasification/blob/main/Course%203%20-%20NLP\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "zX4Kg8DUTKWO"
+      },
+      "source": [
+        "#@title Licensed under the Apache License, Version 2.0 (the \"License\");\n",
+        "# you may not use this file except in compliance with the License.\n",
+        "# You may obtain a copy of the License at\n",
+        "#\n",
+        "# https://www.apache.org/licenses/LICENSE-2.0\n",
+        "#\n",
+        "# Unless required by applicable law or agreed to in writing, software\n",
+        "# distributed under the License is distributed on an \"AS IS\" BASIS,\n",
+        "# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n",
+        "# See the License for the specific language governing permissions and\n",
+        "# limitations under the License."
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP/Course%203%20-%20Week%201%20-%20Lesson%201.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "rX8mhOLljYeM"
+      },
+      "source": [
+        "##### Copyright 2019 The TensorFlow Authors."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "cellView": "form",
+        "id": "BZSlp3DAjdYf"
+      },
+      "source": [
+        "#@title Licensed under the Apache License, Version 2.0 (the \"License\");\n",
+        "# you may not use this file except in compliance with the License.\n",
+        "# You may obtain a copy of the License at\n",
+        "#\n",
+        "# https://www.apache.org/licenses/LICENSE-2.0\n",
+        "#\n",
+        "# Unless required by applicable law or agreed to in writing, software\n",
+        "# distributed under the License is distributed on an \"AS IS\" BASIS,\n",
+        "# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n",
+        "# See the License for the specific language governing permissions and\n",
+        "# limitations under the License."
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zaCMcjMQifQc",
+        "outputId": "da66723c-d26d-4329-8b97-e40a826439df"
+      },
+      "source": [
+        "from tensorflow.keras.preprocessing.text import Tokenizer\n",
+        "\n",
+        "sentences = [\n",
+        "    'i love my dog',\n",
+        "    'I, love my cat',\n",
+        "    'You love my dog!'\n",
+        "]\n",
+        "\n",
+        "tokenizer = Tokenizer(num_words = 100)\n",
+        "tokenizer.fit_on_texts(sentences)\n",
+        "word_index = tokenizer.word_index\n",
+        "print(word_index)"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "{'love': 1, 'my': 2, 'i': 3, 'dog': 4, 'cat': 5, 'you': 6}\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "221mGPFfuh6q",
+        "outputId": "f70a807f-92a8-48a4-eba4-062fc3b00f7c"
+      },
+      "source": [
+        "words = ['gowno to gowno?', \n",
+        "         'chuj mnie mnie', \n",
+        "         'dupa mnie boli?', \n",
+        "         'gówno jest dobre!']\n",
+        "\n",
+        "from tensorflow.keras.preprocessing.text import Tokenizer\n",
+        "token = Tokenizer()\n",
+        "token.fit_on_texts(words)\n",
+        "print(token.word_index)\n",
+        "\n",
+        "####\n",
+        "\n",
+        "token.texts_to_sequences"
+      ],
+      "execution_count": 34,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "{'mnie': 1, 'gowno': 2, 'to': 3, 'chuj': 4, 'dupa': 5, 'boli': 6, 'gówno': 7, 'jest': 8, 'dobre': 9}\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<bound method Tokenizer.texts_to_sequences of <keras_preprocessing.text.Tokenizer object at 0x7fdddb211f50>>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 34
+        }
+      ]
+    }
+  ]
+}
